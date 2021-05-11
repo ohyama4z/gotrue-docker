@@ -29,7 +29,7 @@ jobs:
           docker push ghcr.io/ohyama4z/gotrue:latest
 
       - name: Herokuのセットアップ
-      - uses: akhileshns/heroku-deploy@v3.12.12
+        uses: akhileshns/heroku-deploy@v3.12.12
         with:
           heroku_api_key: ${{ secrets.HEROKU_API_KEY }}
           heroku_app_name: kakomon-management-system
