@@ -27,3 +27,17 @@ jobs:
           docker tag gotrue-image ghcr.io/ohyama4z/gotrue:latest
           docker push ghcr.io/ohyama4z/gotrue:${{ steps.tag-generator.outputs.TAG }}
           docker push ghcr.io/ohyama4z/gotrue:latest
+
+      - name: Herokuのセットアップ
+      - uses: akhileshns/heroku-deploy@v3.12.12
+        with:
+          heroku_api_key: ${{ secrets.HEROKU_API_KEY }}
+          heroku_app_name: kakomon-management-system
+          heroku_email: ${{ secrets.USER_EMAIL }}
+          usedocker: true
+
+      - name: Heroku Container Registoryへのプッシュ
+        run: |
+          heroku container:login
+          docker tag gotrue-image registry.heroku.com/kakomon-management-system/gotrue:${{ steps.tag-generator.outputs.TAG }}
+          docker push registry.heroku.com/kakomon-management-system/gotrue:${{ steps.tag-generator.outputs.TAG }}
