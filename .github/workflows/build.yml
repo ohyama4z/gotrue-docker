@@ -21,7 +21,7 @@ jobs:
 
       - name: ghcrへのプッシュ
         run: |
-          docker build -t gotrue-image ./gotrue
+          docker build -t gotrue-image gotrue
           echo ${{ secrets.GITHUB_TOKEN }} | docker login ghcr.io -u ohyama4z --password-stdin
           docker tag gotrue-image ghcr.io/ohyama4z/gotrue:${{ steps.tag-generator.outputs.TAG }}
           docker tag gotrue-image ghcr.io/ohyama4z/gotrue:latest
