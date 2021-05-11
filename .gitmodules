@@ -1,0 +1,3 @@
+[submodule "gotrue"]
+	path = gotrue
+	url = https://github.com/netlify/gotrue.git
