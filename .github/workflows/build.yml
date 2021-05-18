@@ -34,5 +34,5 @@ jobs:
       - name: Heroku Container Registryへのプッシュ
         run: |
           docker login --username=ohyama4z --password=${{ secrets.HEROKU_AUTH_TOKEN }} registry.heroku.com
-          docker tag gotrue-image registry.heroku.com/kakomon-management-system/gotrue:${{ steps.tag-generator.outputs.TAG }}
-          docker push registry.heroku.com/kakomon-management-system/gotrue:${{ steps.tag-generator.outputs.TAG }}
+          docker tag gotrue-image registry.heroku.com/kakomon-management-system/gotrue
+          docker push registry.heroku.com/kakomon-management-system/gotrue
